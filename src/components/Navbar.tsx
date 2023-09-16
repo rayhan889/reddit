@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Icons } from './Icons'
 import Link from 'next/link'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from './ui/Button'
 
 interface NavbarProps {
   
@@ -14,6 +16,8 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 <Icons.logo className='h-8 w-8 sm:w-6 sm:h-6' />
                 <p className='hidden text-zinc-700 text-sm font-medium md:block'>Breadit</p>
             </Link>
+
+            <Link href={'/sign-in'} className={cn(buttonVariants())}>Sign In</Link>
         </div>
   </div>
   )
