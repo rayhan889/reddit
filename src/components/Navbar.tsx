@@ -17,7 +17,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
                 <p className='hidden text-zinc-700 text-sm font-medium md:block'>Breadit</p>
             </Link>
 
-            <Link href={'/sign-in'} className={cn(buttonVariants())}>Sign In</Link>
+            <Link href='/sign-in' className={cn(buttonVariants())}>Sign In</Link>
         </div>
   </div>
   )

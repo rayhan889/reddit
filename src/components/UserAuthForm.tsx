@@ -5,12 +5,15 @@ import { Button } from './ui/Button'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import { signIn } from "next-auth/react"
+import { useToast } from "@/hooks/use-toast"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
   
 }
 
 const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
+
+  const { toast } = useToast();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -21,6 +24,11 @@ const UserAuthForm: FC<UserAuthFormProps> = ({className, ...props}) => {
             await signIn("google")
         } catch (error) {
             // toast an error
+            toast({
+              title: "Error",
+              description: "There was an error logging in with google",
+              variant: "destructive"
+            })
         } finally {
             setIsLoading(false);
         }
