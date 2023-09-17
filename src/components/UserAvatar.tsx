@@ -3,14 +3,15 @@ import { FC } from 'react'
 import { Avatar, AvatarFallback } from './ui/Avatar'
 import Image from 'next/image'
 import {User as UserLogo} from "lucide-react"
+import { AvatarProps } from '@radix-ui/react-avatar'
 
-interface UserAvatarProps {
+interface UserAvatarProps extends AvatarProps {
   user: Pick<User, 'image' | 'name'>
 }
 
-const UserAvatar: FC<UserAvatarProps> = ({user}) => {
+const UserAvatar: FC<UserAvatarProps> = ({user, ...props}) => {
   return (
-    <Avatar>
+    <Avatar {...props}>
         {user?.image ? (
             <div className='aspect-square relative h-full w-full'>
                 <Image

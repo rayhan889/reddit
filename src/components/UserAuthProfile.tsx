@@ -11,7 +11,10 @@ const UserAuthProfile: FC<UserAuthProfileProps> = ({user}) => {
   return (
     <DropdownMenu>
         <DropdownMenuTrigger>
-            <UserAvatar user={user} />
+            <UserAvatar 
+                user={{ name: user?.name || null, image: user?.image || null }}
+                className='h-8 w-8'
+            />
         </DropdownMenuTrigger>
     </DropdownMenu>
   )
