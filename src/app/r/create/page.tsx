@@ -25,12 +25,12 @@ const Page = ({}) => {
       const { data } = await axios.post("/api/subreddit", payload);
       return data as string;
     },
-    onSuccess: () => {
+    onSuccess: data => {
       toast({
         title: "Successfull",
         description: "Your new subreddit created!",
       });
-      setInput("");
+      router.push(`/r/${data}`);
     },
     onError: err => {
       if (err instanceof AxiosError) {
@@ -51,14 +51,12 @@ const Page = ({}) => {
         if (err.response?.status === 401) {
           return loginToast();
         }
-        if (err.response?.status === 500) {
-          toast({
-            title: "Something went wrong!",
-            description: "Couldnt create subreddit.",
-            variant: "destructive",
-          });
-        }
       }
+      toast({
+        title: "Something went wrong!",
+        description: "Couldnt create subreddit.",
+        variant: "destructive",
+      });
     },
   });
 
