@@ -97,19 +97,23 @@ const Layout = async ({
                     </dd>
                   </div>
 
+                  {isSubscribe ? (
+                    <Link
+                      href={`/r/${slug}/submit`}
+                      className={buttonVariants({
+                        className: "w-full mb-4",
+                        variant: "outline",
+                      })}
+                    >
+                      Create Post
+                    </Link>
+                  ) : null}
                   {subreddit.creator?.id !== session?.user.id ? (
                     <SubscribeLeaveToggle
                       isSubscribe={isSubscribe}
                       subredditId={subreddit.id}
                     />
-                  ) : (
-                    <Link
-                      href={`${slug}/submit`}
-                      className={buttonVariants({ className: "w-full" })}
-                    >
-                      Create Post
-                    </Link>
-                  )}
+                  ) : null}
                 </dl>
               </div>
             </div>
